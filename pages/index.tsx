@@ -3,7 +3,21 @@ import Layout from "../components/Layout";
 import ClipCard from "../components/ClipCard";
 import { getStilClips } from "../lib/wordpress";
 
-export default function Home({ initialClips }) {
+interface Clip {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  stilClipDetails: any;
+}
+
+interface HomeProps {
+  initialClips: {
+    nodes: Clip[];
+  };
+}
+
+export default function Home({ initialClips }: HomeProps) {
   const [clips] = useState(initialClips?.nodes || []);
 
   return (
